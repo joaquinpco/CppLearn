@@ -1,0 +1,31 @@
+name: Build CMake Project
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v4
+
+    - name: Install dependencies (Linux)
+      run: sudo apt-get update && sudo apt-get install -y cmake build-essential
+
+    - name: Configure project with CMake
+      run: |
+        cmake -S . -B build
+
+    - name: Build project
+      run: |
+        cmake --build build --config Release
+
+    # Optional: run tests if you use CTest
+    - name: Run tests
+      working-directory: build
+      run: ctest --output-on-failure
