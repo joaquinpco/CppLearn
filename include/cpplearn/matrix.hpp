@@ -17,6 +17,7 @@ namespace cpplearn
 
     public:
         Matrix(size_t rows, size_t columns, double value = 0.0);
+        Matrix(size_t rows, size_t columns, const std::vector<double> &data);
 
         Matrix operator+(const Matrix &other) const;
         Matrix operator*(const Matrix &other) const;
@@ -24,6 +25,11 @@ namespace cpplearn
 
         double &operator()(size_t r, size_t c);
         double operator()(size_t r, size_t c) const;
+
+        size_t getColumns() const;
+        size_t getRows() const;
+
+        Matrix T() const;
 
         void show() const;
     };

@@ -3,6 +3,7 @@
 namespace cpplearn
 {
     Matrix::Matrix(size_t rows, size_t columns, double value) : rows_(rows), columns_(columns), data_(rows * columns, value) {}
+    Matrix::Matrix(size_t rows, size_t columns, const std::vector<double> &data) : rows_(rows), columns_(columns), data_(data) {}
 
     Matrix Matrix::operator+(const Matrix &B) const
     {
@@ -41,6 +42,22 @@ namespace cpplearn
                     result(i, j) += (*this)(i, k) * B(k, j);
 
         return result;
+    }
+
+    size_t Matrix::getRows() const { return rows_; }
+    size_t Matrix::getColumns() const { return columns_; }
+
+    Matrix Matrix::T() const
+    {
+        Matrix R(columns_, rows_);
+        for (size_t i = 0; i < rows_; i++)
+        {
+            for (size_t j = 0; j < columns_; j++)
+            {
+                R(j, i) = (*this)(i, j);
+            }
+        }
+        return R;
     }
 
     void Matrix::show() const
