@@ -21,7 +21,7 @@ include_directories(include)
 
 # App executable
 file(GLOB SOURCES src/*.cpp)
-add_executable(matrix_app ${SOURCES})
+# add_executable(matrix_app ${SOURCES}) Optional if _main() exist
 
 # Unit tests
 add_executable(matrix_tests test/test_matrix.cpp src/matrix.cpp)
