@@ -1,6 +1,6 @@
-#include "cpplearn/matrix.hpp"
+#include "cpplearn/math/matrix.hpp"
 
-namespace cpplearn
+namespace cpplearn::math
 {
     Matrix::Matrix(size_t rows, size_t columns, double value) : rows_(rows), columns_(columns), data_(rows * columns, value) {}
     Matrix::Matrix(size_t rows, size_t columns, const std::vector<double> &data) : rows_(rows), columns_(columns), data_(data) {}

@@ -1,7 +1,7 @@
-#include "cpplearn/matrix.hpp"
+#include "cpplearn/math/matrix.hpp"
 #include <gtest/gtest.h>
 
-using namespace cpplearn;
+using namespace cpplearn::math;
 
 TEST(MatrixTest, AdditionWorks)
 {
