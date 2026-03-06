@@ -27,7 +27,7 @@ file(GLOB SOURCES src/*.cpp)
 # add_executable(matrix_app ${SOURCES}) Optional if _main() exist
 
 # Unit tests
-add_executable(matrix_tests test/test_matrix.cpp test/test_shape.cpp src/math/matrix.cpp src/core/shape.cpp)
+add_executable(matrix_tests test/test_matrix.cpp test/test_shape.cpp test/test_tensor.cpp src/math/matrix.cpp src/core/shape.cpp src/core/tensor.cpp)
 target_link_libraries(matrix_tests PRIVATE GTest::gtest_main)
 
 include(GoogleTest)

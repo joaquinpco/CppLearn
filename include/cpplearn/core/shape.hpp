@@ -1,5 +1,4 @@
-#ifndef CPPLEARN_HPP_INCLUDED
-#define CPPLEARN_HPP_INCLUDED
+#pragma once
 
 #include <vector>
 #include <numeric>
@@ -18,19 +17,20 @@ namespace cpplearn::core
         const std::vector<size_t> &dims() const;
         const std::vector<size_t> &strides() const;
 
-        size_t offset(const std::vector<size_t> &indices) const;
+        size_t offset(const std::vector<size_t> &index) const;
 
     private:
         std::vector<size_t> dims_;
         std::vector<size_t> strides_;
 
         /*
-         * Number of bytes for next element and number of elements for jump to next row
-         * 4 Bytes => int 32, thats means 4*1 for moving in the same row and 4*C for moving in
-         * the next row, being C, columns numbers for each row
+         * Computes the strides for efficient element access in multi-dimensional arrays.
+         * Strides represent the number of bytes to skip in memory when moving to the next
+         * element along each dimension. For a 2D array (rows x columns):
+         * - stride[0] = columns * element_size (bytes per row)
+         * - stride[1] = element_size (bytes per element)
+         * This enables efficient conversion from multi-dimensional indices to linear memory offsets.
          */
         void compute_strides();
     };
 }
-
-#endif

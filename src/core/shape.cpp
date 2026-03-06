@@ -43,4 +43,22 @@ namespace cpplearn::core
             strides_[i] = strides_[i + 1] * dims_[i + 1];
         }
     }
+
+    size_t Shape::offset(const std::vector<size_t> &index) const
+    {
+        if (index.size() != dims_.size())
+        {
+            throw std::invalid_argument("Number of indices does not match number of dimensions");
+        }
+        size_t offset = 0;
+        for (size_t i = 0; i < index.size(); ++i)
+        {
+            if (index[i] >= dims_[i])
+            {
+                throw std::out_of_range("Index out of range for dimension " + std::to_string(i));
+            }
+            offset += index[i] * strides_[i];
+        }
+        return offset;
+    }
 }
