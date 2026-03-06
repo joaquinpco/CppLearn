@@ -5,7 +5,7 @@
 #include <iostream>
 #include <stdexcept>
 
-namespace cpplearn
+namespace cpplearn::math
 {
 
     class Matrix
